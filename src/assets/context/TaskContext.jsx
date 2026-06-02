@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const TaskContext = createContext()
 
-const API = 'http://localhost:5000/api/tasks'
+const API = '/api';
 
 export function TaskProvider({ children }) {
 
