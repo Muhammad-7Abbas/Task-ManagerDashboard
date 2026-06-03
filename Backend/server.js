@@ -12,7 +12,12 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://admin:Admin1234@cluste
 const PORT = process.env.PORT || 5000;
 
 const taskRoutes = require('./routes/tasks');
+
+// Local development: /api/tasks
 app.use('/api/tasks', taskRoutes);
+
+// Vercel serverless: /tasks (without /api prefix)
+app.use('/tasks', taskRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Task Manager API is running!' });
