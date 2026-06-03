@@ -12,18 +12,26 @@ import { TaskProvider } from './assets/context/TaskContext.jsx'
 
 const Layout = styled.div`
   display: flex;
+  width: 100%;
+  min-height: 100vh;
 `
 
 const MainContent = styled.div`
+  flex: 1;
   margin-left: 240px;
-  width: calc(100% - 240px);
   min-height: 100vh;
   background-color: #0F0F13;
   box-sizing: border-box;
+  width: calc(100% - 240px);
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    width: 100%;
+  }
 `
 
 function App() {
- const [tasks ,setTasks] = useState([])
+  const [tasks, setTasks] = useState([])
 
   const addTask = (newTask) => {
     setTasks(prev => [...prev, { ...newTask, id: Date.now(), completed: false }])

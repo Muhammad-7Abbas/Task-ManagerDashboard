@@ -10,8 +10,8 @@ export const SideBarWrapper = styled.div`
   position: fixed;
   left: 0;
   top: 0;
-  transition: transform 0.3s ease;
   z-index: 200;
+  transition: transform 0.3s ease;
 
   @media (max-width: 768px) {
     transform: ${props => props.$isOpen ? 'translateX(0)' : 'translateX(-100%)'};

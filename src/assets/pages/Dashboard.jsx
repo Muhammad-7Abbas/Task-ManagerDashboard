@@ -7,6 +7,15 @@ import { useTasks } from '../context/TaskContext.jsx'
 
 const PageContent = styled.div`
   padding: 28px;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 16px;
+    padding-top: 60px;
+  }
 `
 
 const StatsGrid = styled.div`
@@ -14,6 +23,16 @@ const StatsGrid = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin-bottom: 24px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
 `
 
 const WelcomeText = styled.h1`
@@ -21,16 +40,33 @@ const WelcomeText = styled.h1`
   font-weight: 700;
   color: #F1F1F1;
   margin-bottom: 6px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
 `
 
 const SubText = styled.p`
   font-size: 14px;
   color: #A0A0B0;
   margin-bottom: 28px;
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
 `
 
 const Section = styled.div`
   margin-top: 24px;
+
+  @media (max-width: 480px) {
+    margin-top: 16px;
+  }
 `
 
 const getGreeting = () => {
@@ -41,11 +77,8 @@ const getGreeting = () => {
   return 'Good Night 🌙'
 }
 
-
 function Dashboard() {
-
-  // ✅ Get tasks from context — no more props needed!
-  const { tasks,loading ,deleteTask, toggleTask } = useTasks()
+  const { tasks, loading, deleteTask, toggleTask } = useTasks()
 
   const totalTasks = tasks.length
   const completed = tasks.filter(t => t.completed).length
@@ -83,13 +116,14 @@ function Dashboard() {
       bgColor: "#F8717122"
     },
   ]
-if (loading) return <div style={{ color: 'white', padding: '28px' }}>Loading tasks...</div>
+
+  if (loading) return <div style={{ color: 'white', padding: '28px' }}>Loading tasks...</div>
+
   return (
     <PageContent>
       <WelcomeText>{getGreeting()}</WelcomeText>
       <SubText>Here's what's happening with your tasks today.</SubText>
 
-      {/* Stats Cards */}
       <StatsGrid>
         {statsData.map((stat, index) => (
           <StatsCard
@@ -103,7 +137,6 @@ if (loading) return <div style={{ color: 'white', padding: '28px' }}>Loading tas
         ))}
       </StatsGrid>
 
-      {/* Progress Bar */}
       <ProgressBar
         completed={completed}
         inProgress={inProgress}
@@ -111,7 +144,6 @@ if (loading) return <div style={{ color: 'white', padding: '28px' }}>Loading tas
         percentage={percentage}
       />
 
-      {/* Recent Tasks — only show first 5 */}
       <Section>
         <TaskList
           tasks={tasks.slice(0, 5)}
@@ -119,7 +151,6 @@ if (loading) return <div style={{ color: 'white', padding: '28px' }}>Loading tas
           onToggle={toggleTask}
         />
       </Section>
-
     </PageContent>
   )
 }
