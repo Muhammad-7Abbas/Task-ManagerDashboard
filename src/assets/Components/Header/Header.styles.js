@@ -12,6 +12,16 @@ export const HeaderWrapper = styled.div`
   top: 0;
   z-index: 100;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px 12px;
+  }
 `
 
 export const PageTitle = styled.h1`
@@ -19,12 +29,28 @@ export const PageTitle = styled.h1`
   font-weight: 700;
   color: #F1F1F1;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 `
 
 export const IconGroup = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
+
+  @media (max-width: 768px) {
+    gap: 12px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 8px;
+  }
 `
 
 export const SearchBar = styled.div`
@@ -36,9 +62,22 @@ export const SearchBar = styled.div`
   border-radius: 8px;
   border: 1px solid #2E2E42;
   transition: border 0.2s ease;
+  position: relative;
 
   &:focus-within {
     border-color: #7C5CFC;
+  }
+
+  @media (max-width: 768px) {
+    padding: 6px 12px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  @media (max-width: 480px) {
+    order: 3;
+    width: 100%;
+    margin-top: 4px;
   }
 `
 
@@ -53,6 +92,16 @@ export const SearchInput = styled.input`
   &::placeholder {
     color: #606070;
   }
+
+  @media (max-width: 768px) {
+    width: 150px;
+    font-size: 13px;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    font-size: 14px; /* Prevents iOS zoom */
+  }
 `
 
 export const BellWrapper = styled.div`
@@ -65,6 +114,10 @@ export const BellWrapper = styled.div`
 
   &:hover {
     background-color: #252535;
+  }
+
+  @media (max-width: 480px) {
+    padding: 4px;
   }
 `
 
@@ -85,6 +138,12 @@ export const Avatar = styled.div`
   &:hover {
     opacity: 0.85;
   }
+
+  @media (max-width: 480px) {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
 `
 
 export const SearchResults = styled.div`
@@ -98,6 +157,17 @@ export const SearchResults = styled.div`
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
   z-index: 200;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    top: 40px;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 480px) {
+    top: 38px;
+    left: -12px;
+    width: calc(100% + 24px);
+  }
 `
 
 export const SearchItem = styled.div`
@@ -116,5 +186,10 @@ export const SearchItem = styled.div`
   span:last-child {
     color: #7C5CFC;
     font-size: 11px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 8px 12px;
+    font-size: 12px;
   }
 `

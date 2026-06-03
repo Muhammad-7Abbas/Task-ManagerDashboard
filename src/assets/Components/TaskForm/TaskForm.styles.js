@@ -20,6 +20,20 @@ export const TaskButton = styled.div`
     transform: scale(1.1);
     box-shadow: 0 6px 28px rgba(124, 92, 252, 0.7);
   }
+
+  @media (max-width: 768px) {
+    bottom: 24px;
+    right: 24px;
+    width: 50px;
+    height: 50px;
+  }
+
+  @media (max-width: 480px) {
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+  }
 `
 
 export const ModalOverlay = styled.div`
@@ -34,16 +48,27 @@ export const ModalOverlay = styled.div`
   justify-content: center;
   z-index: 1000;
   backdrop-filter: blur(4px);
+  padding: 20px;
+  box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    padding: 16px;
+    align-items: flex-end;
+  }
 `
 
 export const ModalBox = styled.div`
   width: 460px;
+  max-width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
   border-radius: 16px;
   padding: 32px;
   background-color: #1E1E2E;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
   border: 1px solid #2E2E42;
   animation: slideUp 0.3s ease;
+  box-sizing: border-box;
 
   @keyframes slideUp {
     from {
@@ -55,6 +80,30 @@ export const ModalBox = styled.div`
       transform: translateY(0);
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 24px;
+    border-radius: 14px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px;
+    border-radius: 12px 12px 0 0;
+    width: 100%;
+    max-height: 85vh;
+    animation: slideUpMobile 0.3s ease;
+
+    @keyframes slideUpMobile {
+      from {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
 `
 
 export const ModalHeader = styled.div`
@@ -64,6 +113,17 @@ export const ModalHeader = styled.div`
   margin-bottom: 28px;
   padding-bottom: 16px;
   border-bottom: 1px solid #2E2E42;
+  gap: 12px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+  }
 `
 
 export const TaskTitle = styled.h3`
@@ -71,6 +131,14 @@ export const TaskTitle = styled.h3`
   font-weight: 700;
   color: #F1F1F1;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 `
 
 export const Label = styled.label`
@@ -79,12 +147,25 @@ export const Label = styled.label`
   color: #A0A0B0;
   margin-bottom: 8px;
   display: block;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
 `
 
 export const FormModalFields = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    gap: 18px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 16px;
+  }
 `
 
 export const TitleField = styled.input`
@@ -97,6 +178,7 @@ export const TitleField = styled.input`
   font-size: 14px;
   outline: none;
   transition: border 0.2s ease;
+  box-sizing: border-box;
 
   &:focus {
     border-color: #7C5CFC;
@@ -105,6 +187,12 @@ export const TitleField = styled.input`
 
   &::placeholder {
     color: #606070;
+  }
+
+  @media (max-width: 480px) {
+    padding: 14px 16px;
+    font-size: 16px; /* Prevents iOS zoom */
+    border-radius: 8px;
   }
 `
 
@@ -121,6 +209,7 @@ export const DescriptionField = styled.textarea`
   height: 100px;
   transition: border 0.2s ease;
   font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
 
   &:focus {
     border-color: #7C5CFC;
@@ -130,11 +219,23 @@ export const DescriptionField = styled.textarea`
   &::placeholder {
     color: #606070;
   }
+
+  @media (max-width: 480px) {
+    padding: 14px 16px;
+    font-size: 16px; /* Prevents iOS zoom */
+    height: 80px;
+    border-radius: 8px;
+  }
 `
 
 export const PriorityDate = styled.div`
   display: flex;
   gap: 16px;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 16px;
+  }
 `
 
 export const PriorityField = styled.select`
@@ -148,6 +249,7 @@ export const PriorityField = styled.select`
   outline: none;
   cursor: pointer;
   transition: border 0.2s ease;
+  box-sizing: border-box;
 
   &:focus {
     border-color: #7C5CFC;
@@ -155,6 +257,12 @@ export const PriorityField = styled.select`
 
   option {
     background-color: #1E1E2E;
+  }
+
+  @media (max-width: 480px) {
+    padding: 14px 16px;
+    font-size: 16px; /* Prevents iOS zoom */
+    border-radius: 8px;
   }
 `
 
@@ -168,6 +276,7 @@ export const DateField = styled.input`
   font-size: 14px;
   outline: none;
   transition: border 0.2s ease;
+  box-sizing: border-box;
 
   &:focus {
     border-color: #7C5CFC;
@@ -176,6 +285,12 @@ export const DateField = styled.input`
   &::-webkit-calendar-picker-indicator {
     filter: invert(1);
     cursor: pointer;
+  }
+
+  @media (max-width: 480px) {
+    padding: 14px 16px;
+    font-size: 16px; /* Prevents iOS zoom */
+    border-radius: 8px;
   }
 `
 
@@ -186,6 +301,17 @@ export const FormButton = styled.div`
   margin-top: 28px;
   padding-top: 20px;
   border-top: 1px solid #2E2E42;
+
+  @media (max-width: 768px) {
+    margin-top: 24px;
+    padding-top: 16px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 20px;
+    padding-top: 14px;
+    gap: 10px;
+  }
 `
 
 export const CancelButton = styled.button`
@@ -204,6 +330,13 @@ export const CancelButton = styled.button`
     color: #F1F1F1;
     border-color: #3E3E52;
   }
+
+  @media (max-width: 480px) {
+    padding: 12px 20px;
+    font-size: 14px;
+    flex: 1;
+    border-radius: 8px;
+  }
 `
 
 export const AddTaskButton = styled.button`
@@ -221,6 +354,13 @@ export const AddTaskButton = styled.button`
     opacity: 0.9;
     transform: translateY(-1px);
   }
+
+  @media (max-width: 480px) {
+    padding: 12px 20px;
+    font-size: 14px;
+    flex: 1;
+    border-radius: 8px;
+  }
 `
 
 export const ErrorText = styled.p`
@@ -230,4 +370,8 @@ export const ErrorText = styled.p`
   display: flex;
   align-items: center;
   gap: 4px;
+
+  @media (max-width: 480px) {
+    font-size: 11px;
+  }
 `
