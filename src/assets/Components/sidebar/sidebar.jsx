@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FiGrid, FiList, FiCheckSquare, FiMenu, FiX } from 'react-icons/fi'
-import { SideBarWrapper, Logo, NavMenu, NavItem, Overlay, MenuButton, CloseButton } from './sidebar.styles'
+import { SideBarWrapper, Logo, NavMenu, NavItem, Overlay, MenuButton, CloseButton } from './Sidebar.styles'
 
 function SideBar() {
   const [isOpen, setIsOpen] = useState(false)
