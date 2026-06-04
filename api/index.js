@@ -13,12 +13,10 @@ const PORT = process.env.PORT || 5000;
 
 const taskRoutes = require('./routes/tasks');
 
-// Local development: /api/tasks
-app.use('/api/tasks', taskRoutes);
-
-// Vercel serverless: /tasks (without /api prefix)
+// Mount routes at root — Vercel strips /api when calling the function
 app.use('/tasks', taskRoutes);
 
+// Health check
 app.get('/', (req, res) => {
   res.json({ message: 'Task Manager API is running!' });
 });
@@ -39,5 +37,4 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-// Export for Vercel serverless
 module.exports = app;
