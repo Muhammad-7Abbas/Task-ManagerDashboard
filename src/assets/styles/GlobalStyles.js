@@ -11,13 +11,16 @@ const GlobalStyles = createGlobalStyle`
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%; /* Prevent iOS font scaling */
   }
 
   body {
     background-color: #0F0F13;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: #F1F1F1;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   #root {
@@ -35,6 +38,16 @@ const GlobalStyles = createGlobalStyle`
   ::-webkit-scrollbar-thumb {
     background: #7C5CFC;
     border-radius: 999px;
+  }
+
+  /* Mobile tap highlight */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent text selection on UI elements */
+  button, .no-select {
+    user-select: none;
   }
 `
 

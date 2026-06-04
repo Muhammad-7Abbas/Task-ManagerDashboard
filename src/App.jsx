@@ -23,10 +23,23 @@ const MainContent = styled.div`
   background-color: #0F0F13;
   box-sizing: border-box;
   width: calc(100% - 240px);
+  padding: 0;
 
   @media (max-width: 768px) {
     margin-left: 0;
     width: 100%;
+  }
+`
+
+const ContentWrapper = styled.div`
+  padding: 24px 28px;
+
+  @media (max-width: 768px) {
+    padding: 16px 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px 16px;
   }
 `
 
@@ -55,11 +68,13 @@ function App() {
           <SideBar />
           <MainContent>
             <Header />
-            <Routes>
-              <Route path='/' element={<Dashboard />} />
-              <Route path='/tasks' element={<Tasks />} />
-              <Route path='/completed' element={<Completed />} />
-            </Routes>
+            <ContentWrapper>
+              <Routes>
+                <Route path='/' element={<Dashboard />} />
+                <Route path='/tasks' element={<Tasks />} />
+                <Route path='/completed' element={<Completed />} />
+              </Routes>
+            </ContentWrapper>
             <TaskForm onAdd={addTask} />
           </MainContent>
         </Layout>

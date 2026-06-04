@@ -14,13 +14,13 @@ export const HeaderWrapper = styled.div`
   box-sizing: border-box;
 
   @media (max-width: 768px) {
-    padding: 12px 16px;
-    flex-wrap: wrap;
+    padding: 14px 16px;
     gap: 12px;
   }
 
   @media (max-width: 480px) {
-    padding: 10px 12px;
+    padding: 12px 12px;
+    flex-wrap: wrap;
   }
 `
 
@@ -29,13 +29,17 @@ export const PageTitle = styled.h1`
   font-weight: 700;
   color: #F1F1F1;
   margin: 0;
+  margin-left: 0;
 
   @media (max-width: 768px) {
     font-size: 18px;
+    margin-left: 44px; /* Space for hamburger menu */
   }
 
   @media (max-width: 480px) {
     font-size: 16px;
+    margin-left: 40px;
+    order: 1;
   }
 `
 
@@ -46,10 +50,12 @@ export const IconGroup = styled.div`
 
   @media (max-width: 768px) {
     gap: 12px;
+    margin-left: auto;
   }
 
   @media (max-width: 480px) {
     gap: 8px;
+    order: 2;
   }
 `
 
@@ -70,14 +76,12 @@ export const SearchBar = styled.div`
 
   @media (max-width: 768px) {
     padding: 6px 12px;
-    flex: 1;
-    min-width: 0;
   }
 
   @media (max-width: 480px) {
     order: 3;
     width: 100%;
-    margin-top: 4px;
+    margin-top: 8px;
   }
 `
 
@@ -94,13 +98,13 @@ export const SearchInput = styled.input`
   }
 
   @media (max-width: 768px) {
-    width: 150px;
+    width: 140px;
     font-size: 13px;
   }
 
   @media (max-width: 480px) {
     width: 100%;
-    font-size: 14px; /* Prevents iOS zoom */
+    font-size: 14px;
   }
 `
 
@@ -165,8 +169,8 @@ export const SearchResults = styled.div`
 
   @media (max-width: 480px) {
     top: 38px;
-    left: -12px;
-    width: calc(100% + 24px);
+    left: 0;
+    width: 100%;
   }
 `
 

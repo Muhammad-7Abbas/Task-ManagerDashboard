@@ -15,8 +15,12 @@ export const SideBarWrapper = styled.div`
 
   @media (max-width: 768px) {
     transform: ${props => props.$isOpen ? 'translateX(0)' : 'translateX(-100%)'};
-    width: 260px;
+    width: 280px;
     box-shadow: ${props => props.$isOpen ? '4px 0 20px rgba(0,0,0,0.5)' : 'none'};
+  }
+
+  @media (max-width: 480px) {
+    width: 260px;
   }
 `
 
@@ -103,9 +107,9 @@ export const Overlay = styled.div`
 export const MenuButton = styled.button`
   display: none;
   position: fixed;
-  top: 14px;
-  left: 14px;
-  z-index: 250;
+  top: 16px;
+  left: 16px;
+  z-index: 300;
   background: #1A1A24;
   color: #F1F1F1;
   border: 1px solid #2E2E42;
@@ -127,8 +131,8 @@ export const MenuButton = styled.button`
   }
 
   @media (max-width: 480px) {
-    top: 10px;
-    left: 10px;
+    top: 12px;
+    left: 12px;
     padding: 8px;
     font-size: 18px;
   }
