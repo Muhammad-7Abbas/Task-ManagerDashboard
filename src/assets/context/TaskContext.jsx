@@ -4,7 +4,7 @@ import axios from 'axios'
 const TaskContext = createContext()
 
 // Use full URL for production
-const API_URL = 'https://task-manager-dashboard-seven.vercel.app/api/tasks';
+const API_URL =  '/api/tasks';
 
 export function TaskProvider({ children }) {
   const [tasks, setTasks] = useState([])

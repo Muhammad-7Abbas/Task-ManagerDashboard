@@ -12,7 +12,7 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://admin:Admin1234@cluste
 
 const taskRoutes = require('./routes/tasks');
 
-app.use('/', taskRoutes);
+app.use('/tasks', taskRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Task Manager API is running!' });
