@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://admin:Admin1234@cluster0.lmg8dpg.mongodb.net/taskmanager';
 
-// Connect to MongoDB (cached for serverless)
 let cached = global.mongoose;
 if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
@@ -19,7 +18,6 @@ async function connectDB() {
   return cached.conn;
 }
 
-// Task Schema
 const taskSchema = new mongoose.Schema({
   title: String,
   description: String,
@@ -39,6 +37,10 @@ module.exports = async (req, res) => {
   
   if (req.method === 'OPTIONS') return res.status(200).end();
 
+  // Parse ID from URL: /api/tasks/123 → id=123
+  const url = req.url || '';
+  const id = url.split('/').filter(Boolean).pop();
+
   try {
     if (req.method === 'GET') {
       const tasks = await Task.find().sort({ createdAt: -1 });
@@ -52,15 +54,16 @@ module.exports = async (req, res) => {
     }
     
     if (req.method === 'PUT') {
-      const { id } = req.query;
+      if (!id || id === 'tasks') return res.status(400).json({ message: 'Task ID required' });
       const task = await Task.findById(id);
+      if (!task) return res.status(404).json({ message: 'Task not found' });
       task.completed = !task.completed;
       const updated = await task.save();
       return res.json(updated);
     }
     
     if (req.method === 'DELETE') {
-      const { id } = req.query;
+      if (!id || id === 'tasks') return res.status(400).json({ message: 'Task ID required' });
       await Task.findByIdAndDelete(id);
       return res.json({ message: 'Task deleted!' });
     }
